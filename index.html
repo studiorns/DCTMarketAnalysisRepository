@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Analysis Repository | Abu Dhabi - Department of Culture and Tourism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4285f4;
+            --primary-light: #1a2233;
+            --primary-dark: #8ab4f8;
+            --secondary: #34a853;
+            --secondary-light: #1a2a1e;
+            --warning: #fbbc04;
+            --warning-light: #332a1a;
+            --danger: #ea4335;
+            --danger-light: #331f1e;
+            --gray-100: #1e1e1e;
+            --gray-200: #2d2d2d;
+            --gray-300: #3d3d3d;
+            --gray-400: #4d4d4d;
+            --gray-500: #777777;
+            --gray-600: #a0a0a0;
+            --gray-700: #c0c0c0;
+            --gray-800: #e0e0e0;
+            --gray-900: #f0f0f0;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.6);
+            --radius-sm: 4px;
+            --radius: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+            --bg-color: #000000;
+            --card-bg: #121212;
+            --section-bg: #181818;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a73e8 0%, #174ea6 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IHgxPSIxMDAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiIGlkPSJhIj48c3RvcCBzdG9wLWNvbG9yPSIjRkZGIiBzdG9wLW9wYWNpdHk9Ii4wNSIgb2Zmc2V0PSIwJSIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkYiIHN0b3Atb3BhY2l0eT0iLjAyIiBvZmZzZXQ9IjEwMCUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMTQ0MCAyMDBjLTEzMS44LTEyLjktMjY3LjgtMTkuNC00MDgtMTkuNC0xNDAuMiAwLTI3Ni4yIDYuNS00MDggMTkuNFYwaDgxNnYyMDB6IiBmaWxsPSJ1cmwoI2EpIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 5px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+        
+        .description {
+            max-width: 800px;
+            font-size: 1.1rem;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        .dashboard-section {
+            background-color: var(--section-bg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            padding: 28px;
+            margin-bottom: 32px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .dashboard-section:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .dashboard-section h2 {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--gray-200);
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+            color: var(--gray-900);
+            font-size: 1.5rem;
+        }
+        
+        .dashboard-section h2 i {
+            margin-right: 12px;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .market-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--gray-300);
+            position: relative;
+        }
+        
+        .market-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .market-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .market-card:hover::before {
+            opacity: 1;
+        }
+        
+        .market-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .flag-container {
+            width: 30px;
+            height: 30px;
+            margin-right: 16px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-200);
+        }
+        
+        .flag-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .market-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .market-links {
+            padding: 20px;
+        }
+        
+        .link-button {
+            display: flex;
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .link-button:last-child {
+            margin-bottom: 0;
+        }
+        
+        .link-button i {
+            margin-right: 8px;
+        }
+        
+        .dashboard-link {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .dashboard-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+        
+        .insights-link {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary);
+        }
+        
+        .insights-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+        
+        .insight-summary {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+        
+        .insight-summary::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+        
+        .insight-summary h3 {
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .insight-summary h3 i {
+            margin-right: 10px;
+        }
+        
+        .insight-summary p {
+            margin: 0;
+            color: var(--gray-800);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid var(--gray-300);
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(26, 115, 232, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .markets-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .dashboard-section {
+                padding: 20px;
+            }
+            
+            .dashboard-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 25px 0;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .markets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .market-name {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Market Analysis Repository</h1>
+            <div class="subtitle">Abu Dhabi - Department of Culture and Tourism</div>
+            <p class="description">A comprehensive collection of market analysis dashboards and insights for key source markets, providing data-driven intelligence to inform strategic marketing decisions and optimize tourism growth.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard-section">
+            <h2><i class="fas fa-globe"></i> Source Markets</h2>
+            
+            <div class="insight-summary">
+                <h3><i class="fas fa-lightbulb"></i> Repository Overview</h3>
+                <p>This repository provides access to market-specific dashboards and detailed insights for Abu Dhabi's key source markets. Each market page contains comprehensive analysis of travel trends, brand health metrics, and strategic recommendations to optimize marketing efforts and drive tourism growth.</p>
+            </div>
+            
+            <div class="markets-grid">
+                <!-- UK -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/united-kingdom.png" alt="UK Flag">
+                        </div>
+                        <div class="market-name">United Kingdom</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/UKMarketInsights.github.io/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/UKInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Germany -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/german.png" alt="Germany Flag">
+                        </div>
+                        <div class="market-name">Germany</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/GermanyMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/GermanyInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- US -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/united-states.png" alt="US Flag">
+                        </div>
+                        <div class="market-name">United States</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/USMarketInsights.github.io/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/USIsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- India -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/India.png" alt="India Flag">
+                        </div>
+                        <div class="market-name">India</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/IndiaMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/IndiaInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- France -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/france.png" alt="France Flag">
+                        </div>
+                        <div class="market-name">France</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/FranceMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/FranceInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Saudi Arabia -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/saudi-arabia.png" alt="Saudi Arabia Flag">
+                        </div>
+                        <div class="market-name">Saudi Arabia</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/SaudiArabiaMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/SaudiArabiaInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Italy -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/italy.png" alt="Italy Flag">
+                        </div>
+                        <div class="market-name">Italy</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/ItalyMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/ItalyInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Kuwait -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="CountryFlags/kuwait.png" alt="Kuwait Flag">
+                        </div>
+                        <div class="market-name">Kuwait</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/KuwaitMarketAnalysis/" class="link-button dashboard-link" target="_blank">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/KuwaitInsights/" class="link-button insights-link" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 Renos Founotulakis - Research & Insight Unit Head</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add hover effect to market cards
+        const marketCards = document.querySelectorAll('.market-card');
+        
+        marketCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = 'var(--shadow-md)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>
