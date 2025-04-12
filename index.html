@@ -131,6 +131,39 @@
             opacity: 0.8;
         }
         
+        .summary-section {
+            background-color: var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-300);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .summary-section::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            opacity: 0.1;
+        }
+        
+        .summary-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--gray-800);
+            margin: 0;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
         .dashboard-section {
             background-color: var(--section-bg);
             border-radius: var(--radius-md);
@@ -443,16 +476,18 @@
             </div>
             <h1>Market Analysis Repository</h1>
             <div class="subtitle">Abu Dhabi - Department of Culture and Tourism</div>
-            <p class="description">A comprehensive collection of market analysis dashboards and insights for key source markets, providing data-driven intelligence to inform strategic marketing decisions and optimize tourism growth.</p>
         </div>
     </header>
     
     <div class="container">
+        <div class="summary-section">
+            <p class="summary-text">A centralized repository of market intelligence featuring comprehensive dashboards, strategic insights, and specialized studies for key global markets, sponsorships, and marketing initiatives. This collection provides data-driven intelligence across Tier 1 and Tier 2 markets as well as ad-hoc studies, empowering strategic decision-making to optimize tourism growth and marketing effectiveness.</p>
+        </div>
         <div class="dashboard-section">
             <h2><i class="fas fa-globe"></i> Tier 1 Markets</h2>
             
             <div class="insight-summary">
-                <h3><i class="fas fa-lightbulb"></i> Repository Overview</h3>
+                <h3><i class="fas fa-lightbulb"></i> Tier 1 Markets Overview</h3>
                 <p>This repository provides access to market-specific dashboards and detailed insights for Abu Dhabi's key source markets. Each market page contains comprehensive analysis of travel trends, brand health metrics, and strategic recommendations to optimize marketing efforts and drive tourism growth.<br><br><strong>Note:</strong> Russia and China markets are currently under development and will be available soon.</p>
             </div>
             
@@ -599,6 +634,24 @@
                             <i class="fas fa-chart-line"></i> Dashboard
                         </a>
                         <a href="https://studiorns.github.io/USIsights/" class="link-button insights-link">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- United Arab Emirates -->
+                <div class="market-card">
+                    <div class="market-header">
+                        <div class="flag-container">
+                            <img src="united-arab-emirates.png" alt="UAE Flag">
+                        </div>
+                        <div class="market-name">United Arab Emirates</div>
+                    </div>
+                    <div class="market-links">
+                        <a href="https://studiorns.github.io/Domestic.BHT.DataViz/" class="link-button dashboard-link">
+                            <i class="fas fa-chart-line"></i> Dashboard
+                        </a>
+                        <a href="https://studiorns.github.io/Domestic.BHT.Report/" class="link-button insights-link">
                             <i class="fas fa-lightbulb"></i> Insights
                         </a>
                     </div>
@@ -899,7 +952,7 @@
                         <div class="flag-container">
                             <img src="basketball.png" alt="Basketball">
                         </div>
-                        <div class="market-name">Boston Celtics</div>
+                        <div class="market-name">Boston Celtics Sponsorship</div>
                     </div>
                     <div class="market-links">
                         <a href="https://studiorns.github.io/BostonCeltics/" class="link-button dashboard-link">
